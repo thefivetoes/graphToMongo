@@ -11,7 +11,7 @@ var application_root = __dirname,
 
 var app = express();
 
-mongoose.connect( "mongodb://localhost/meyermap2" );
+mongoose.connect( "mongodb://localhost/fn1" );
 
 app.use( bodyParser.text() );
 app.use( methodOverride() );
@@ -23,12 +23,21 @@ app.get( '/api', function( req,res ) {
 } );
 
 app.get( '/test', function( req,res ){
+  // fs.readFile('./data/fn.json', 'utf8', function( err,data ) {
+  //   if( err ){
+  //     console.log( err );
+  //   }
+  //   else{
+  //     db.addFBPosts( data );
+  //   }
+  // });
   fs.readFile('./data/fn.json', 'utf8', function( err,data ) {
     if( err ){
       console.log( err );
     }
     else{
-      db.addFBPosts( data );
+    //console.log( data );
+    db.addFBPosts( data );
     }
   });
   res.send( "ok" );
