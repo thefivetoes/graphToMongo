@@ -4,13 +4,14 @@ var mongoose = require('mongoose'),
 
 exports.addFBPosts = function( d ){
   var posts = JSON.parse(d).posts.data;
+  console.log('updating data...');
   for( var i = 0; i < posts.length; i ++ ){
 
     var thisData = posts[i];
     var url = "https://graph.facebook.com/v2.2/";
     url += thisData.id;
     url += "/likes?summary=1"
-    url += "&access_token=CAACEdEose0cBAIf40oysGbZCV0UODEm4XDVAoLrNrdb6P6ZADfMZBk9lWAlBI85znQZBQamOZAbCZAhyQq0xZBmLuqw8bkvtNTE47JEjO1qNegUUuOZAOFN0ZAZC9j1xNnZAP5X7PHURepZCnAi9ykAhHf3pAHwLns8hNuvRtEZAcJH2CvRNmu7V0eYmqk9Huh1mvWxSxNVAhA6A4y94lZBebAcaBg";
+    url += "&access_token=557612781040092|krAaB7t-HMQeqYpN8NNnGUPfVNA";
 
     var options = {
       host: '',
@@ -39,7 +40,8 @@ exports.addFBPosts = function( d ){
         console.log(e.message);
     });
     request.end();
-}
+  }
+  console.log('data update complete');
   // for( var i = 0; i < data.length; i ++ ) {
   //   var thisPoint = data[i].split(',');
   //   var thisDate = new Date();
